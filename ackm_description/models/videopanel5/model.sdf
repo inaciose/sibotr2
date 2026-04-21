@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+<model name="videopanel5">
+  <static>true</static>
+    <link name="lcd1">
+	  <pose>-0.4 0 0 1.5708 0 3.1415</pose>
+      <collision name="collision">
+        <geometry>
+			<box>
+			  <size>0.2673 0.4758 0.01</size>
+			</box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>100</mu>
+              <mu2>50</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+		<visual name="screen1f">
+		  <pose>0 0 0.0005 0 0 0</pose>
+		  <geometry>
+			<plane>
+			  <normal>0 0 1</normal>
+			  <size>0.4758 0.2673</size>
+			</plane>
+		  </geometry>
+
+		  <material>
+			<diffuse>1 1 1 1</diffuse>
+			<pbr>
+			  <metal>
+				<albedo_map>materials/textures/chess.png</albedo_map>
+			  </metal>
+			</pbr>
+		  </material>
+		</visual>
+		<visual name="screen1b">
+		  <pose>0 0 -0.0005 3.1415 0 3.1415</pose>
+		  <geometry>
+			<plane>
+			  <normal>0 0 1</normal>
+			  <size>0.4758 0.2673</size>
+			</plane>
+		  </geometry>
+
+		  <material>
+			<diffuse>1 1 1 1</diffuse>
+			<pbr>
+			  <metal>
+				<albedo_map>materials/textures/chess.png</albedo_map>
+			  </metal>
+			</pbr>
+		  </material>
+		</visual>
+    </link>
+    <link name="lcd2">
+	  <pose>0.4 0 0 1.5708 0 1.5708</pose>
+      <collision name="collision">
+        <geometry>
+			<box>
+			  <size>0.2673 0.4758 0.01</size>
+			</box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>100</mu>
+              <mu2>50</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+		<visual name="screen2f">
+		  <pose>0 0 0.0005 0 -1.5708 0</pose>
+		  <geometry>
+			<plane>
+			  <normal>0 0 1</normal>
+			  <size>0.4758 0.2673</size>
+			</plane>
+		  </geometry>
+
+		  <material>
+			<diffuse>1 1 1 1</diffuse>
+			<pbr>
+			  <metal>
+				<albedo_map>materials/textures/chess.png</albedo_map>
+			  </metal>
+			</pbr>
+		  </material>
+		</visual>
+		<visual name="screen2b">
+		  <pose>0 0 -0.0005 0 1.5708 0</pose>
+		  <geometry>
+			<plane>
+			  <normal>0 0 1</normal>
+			  <size>0.4758 0.2673</size>
+			</plane>
+		  </geometry>
+
+		  <material>
+			<diffuse>1 1 1 1</diffuse>
+			<pbr>
+			  <metal>
+				<albedo_map>materials/textures/chess.png</albedo_map>
+			  </metal>
+			</pbr>
+		  </material>
+		</visual>
+    </link>
+
+  </model>
+</sdf>
+

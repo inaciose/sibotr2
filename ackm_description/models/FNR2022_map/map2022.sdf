@@ -1,0 +1,39 @@
+﻿<?xml version="1.0"?>
+<sdf version="1.4">
+<model name="FNR2022_map">
+  <static>true</static>
+    <link name="link">
+      <collision name="collision">
+        <geometry>
+			<box>
+			  <size>22 29.9 0.01</size>
+			</box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>100</mu>
+              <mu2>50</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+		<visual name="visual">
+		  <geometry>
+			<box>
+			  <size>22 29.9 0.01</size>
+			</box>
+		  </geometry>
+
+		  <material>
+			<diffuse>1 1 1 1</diffuse>
+			<pbr>
+			  <metal>
+				<albedo_map>materials/textures/track.png</albedo_map>
+			  </metal>
+			</pbr>
+		  </material>
+		</visual>
+    </link>
+  </model>
+</sdf>

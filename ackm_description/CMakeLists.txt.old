@@ -1,0 +1,83 @@
+cmake_minimum_required(VERSION 3.8)
+project(ackm_description)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# Find ROS 2 dependencies
+find_package(rclcpp REQUIRED)
+find_package(OpenCV REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(ament_cmake REQUIRED)
+find_package(robot_state_publisher REQUIRED)
+find_package(xacro REQUIRED)
+find_package(ament_index_cpp REQUIRED)   # Needed for videopanel
+
+# Find Gazebo Harmonic dependencies
+find_package(gz-sim8 REQUIRED)
+find_package(gz-rendering8 REQUIRED)
+find_package(gz-plugin2 REQUIRED)
+find_package(gz-transport13 REQUIRED)
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  set(ament_cmake_copyright_FOUND TRUE)
+  set(ament_cmake_cpplint_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+# === Existing videopanel executable ===
+add_executable(videopanel src/videopanel.cpp)
+
+ament_target_dependencies(videopanel
+  rclcpp
+  OpenCV
+  std_msgs
+  ament_index_cpp
+)
+
+# === Gazebo Harmonic Dynamic Texture Plugin ===
+# The plugin source file (place it in src/ directory)
+add_library(DynamicTexturePlugin SHARED src/DynamicTexturePlugin.cc)
+
+# Link Gazebo libraries
+target_link_libraries(DynamicTexturePlugin
+  gz-sim8::core
+  gz-rendering8::core
+  gz-plugin2::core
+  gz-transport13::core
+)
+
+# Set plugin properties: no prefix, .so suffix (Linux)
+set_target_properties(DynamicTexturePlugin PROPERTIES
+  PREFIX ""
+  SUFFIX ".so"
+)
+
+# Optional: Add compiler flags if needed
+target_compile_options(DynamicTexturePlugin PRIVATE -Wall -Wextra)
+
+# === Installation ===
+# Install the videopanel executable
+install(TARGETS
+  videopanel
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+# Install the Gazebo plugin library
+install(TARGETS
+  DynamicTexturePlugin
+  DESTINATION lib/${PROJECT_NAME}   # or lib/gazebo_plugins, but keep with package
+)
+
+# Install directories (models, worlds, hooks, launch)
+install(DIRECTORY
+  models
+  worlds
+  hooks
+  launch
+  DESTINATION share/${PROJECT_NAME}/
+)
+
+ament_package()

@@ -1,0 +1,15 @@
+material FNR2022/Image
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+
+      texture_unit
+      {
+        texture track.png
+      }
+    }
+  }
+}
