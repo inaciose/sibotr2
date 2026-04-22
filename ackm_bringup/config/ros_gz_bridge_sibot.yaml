@@ -36,8 +36,14 @@
   gz_type_name: "gz.msgs.IMU"
   direction: GZ_TO_ROS
 
-- ros_topic_name: "/camera/front_raw"
+- ros_topic_name: "/camera_front/image_raw"
   gz_topic_name: "/camera_front"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/camera_signal/image_raw"
+  gz_topic_name: "/camera_signal"
   ros_type_name: "sensor_msgs/msg/Image"
   gz_type_name: "gz.msgs.Image"
   direction: GZ_TO_ROS

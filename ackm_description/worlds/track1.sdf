@@ -80,27 +80,6 @@
 	  <uri>model://ackm_description/models/videopanel3</uri>
 	  <pose>0 -1.55 1.2 0 0 1.5708</pose>
 	</include>
-    	
-	<model name="videopaneltest">
-	  <static>true</static>
-
-	  <link name="link">
-		<visual name="screen">
-		  <pose>0 1.55 1.10 1.5708 0 1.5708</pose>
-		  <geometry>
-			<box>
-			  <size>2 1 0.01</size>
-			</box>
-		  </geometry>
-
-		  <material>
-			<ambient>1 1 1 1</ambient>
-			<diffuse>1 1 1 1</diffuse>
-		  </material>
-		</visual>
-	  </link>
-	  <plugin name="DynamicTexturePlugin" filename="/ws/ros_ws/install/ackm_description/lib/libgzDynamicPanelTexturePlugin.so" />
-	</model>
 
   </world>
 </sdf>
